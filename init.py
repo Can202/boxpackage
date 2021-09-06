@@ -9,18 +9,19 @@ BUTTONWIDTH='44'
 screen = tk.Tk()
 screen.title("dnf")
 screen.geometry("400x300")
+screen.resizable(width = False, height = False)
 
 def install():
-	os.system("xterm -e 'echo what do you want install? && read install && sudo dnf install $install'")
+	os.system("lxterminal -e 'echo what do you want install? && read install && dnf install $install' && read")
 
 def search():
-	os.system("xterm -e 'echo what do you want search? && read search && sudo dnf search $search && read'")
+	os.system("lxterminal -e 'echo what do you want search? && read search && dnf search $search && read'")
 
 def remove():
-	os.system("xterm -e 'echo what do you want remove? && read search && sudo dnf remove $remove'")
+	os.system("lxterminal -e 'echo what do you want remove? && read search && dnf remove $remove' && read")
 
 def update():
-	os.system("xterm -e 'sudo dnf update'")
+	os.system("lxterminal -e 'sudo dnf update'")
 
 def main():
 	

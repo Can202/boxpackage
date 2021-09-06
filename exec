@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! -z $1 ]
+then
+	if [ $1 = "sudo" ]
+	then
+		sudo python3 /home/manuel/Descargas/installer-test/init.py
+	fi
+	if [ $1 = "su" ]
+	then
+		su root -c 'python3 /home/manuel/Descargas/installer-test/init.py'
+	fi
+fi
