@@ -5,15 +5,18 @@ from tkinter import ttk
 import os
 
 #distro
-import fedora as distro
-import debian
+import fedora
+import debian as distro
 
 
 BUTTONHEIGHT='3'
-BUTTONWIDTH='44'
+#BUTTONWIDTH='44'
+BUTTONWIDTH='39'
+#TEXTWIDTH=20
+TEXTWIDTH=18
 
 screen = tk.Tk()
-screen.title("dnf")
+screen.title("Install")
 screen.geometry("400x300")
 screen.resizable(width = False, height = False)
 
@@ -23,7 +26,7 @@ def install():
 	instscreen.title("program to install?")
 	instscreen.resizable(width = False, height = False)
 	
-	entry = ttk.Entry(instscreen, width=20)
+	entry = ttk.Entry(instscreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
 	
 	instok = tk.Button(instscreen, command=lambda: distro.installinstok(entry.get()), text='ok', height=1, width=3)
@@ -38,7 +41,7 @@ def search():
 	searchscreen.title("program to search?")
 	searchscreen.resizable(width = False, height = False)
 	
-	entry = ttk.Entry(searchscreen, width=20)
+	entry = ttk.Entry(searchscreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
 	
 	instok = tk.Button(searchscreen, command=lambda: distro.searchtok(entry.get()), text='ok', height=1, width=3)
@@ -52,7 +55,7 @@ def remove():
 	removescreen.title("program to remove?")
 	removescreen.resizable(width = False, height = False)
 	
-	entry = ttk.Entry(removescreen, width=20)
+	entry = ttk.Entry(removescreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
 	
 	instok = tk.Button(removescreen, command=lambda: distro.removetok(entry.get()), text='ok', height=1, width=3)
