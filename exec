@@ -5,9 +5,18 @@ then
 	if [ $1 = "sudo" ]
 	then
 		sudo python3 /home/manuel/Descargas/installer-test/init.py
+	else
+		if [ $1 = "su" ]
+		then
+			su root -c 'python3 /home/manuel/Descargas/installer-test/init.py'
+		else
+			echo execute with sudo? (Y/n)
+			read sudo
+			if [ $sudo = Y ] || [ $sudo = y ]
+			then
+				sudo python3 /home/manuel/Descargas/installer-test/init.py
+			
+		fi
 	fi
-	if [ $1 = "su" ]
-	then
-		su root -c 'python3 /home/manuel/Descargas/installer-test/init.py'
-	fi
+	
 fi

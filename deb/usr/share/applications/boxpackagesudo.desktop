@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BoxPackage Sudo
+Exec=boxpackage-sudo
+Icon=boxpackage
+Terminal=True
+Type=Application
+Categories=Utility

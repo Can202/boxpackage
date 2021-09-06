@@ -1,0 +1,9 @@
+Package: boxpackage
+Priority: optional
+Section: admin
+Maintainer: Can202 <mgoopazo@gmail.com>
+Architecture: amd64
+Version: 0.1
+Depends: python3, lxterminal
+Description: Installer
+ Simple Visual Installer (apt)

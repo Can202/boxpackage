@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BoxPackage Su
+Exec=boxpackage-su
+Icon=boxpackage
+Terminal=True
+Type=Application
+Categories=Utility

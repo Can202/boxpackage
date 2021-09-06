@@ -16,7 +16,7 @@ BUTTONWIDTH='39'
 TEXTWIDTH=18
 
 screen = tk.Tk()
-screen.title("Install")
+screen.title("BoxPackage")
 screen.geometry("400x400")
 screen.resizable(width = False, height = False)
 

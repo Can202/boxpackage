@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ ! -z $1 ] 
+then
+
+	if [ $(whoami) = "root" ]
+	then
+		/usr/lib64/boxpackage/init $1
+		exit
+	fi
+
+	echo "Do you want to use sudo? (Y/n)"
+	read rootcommand
+	if [ $rootcommand = Y ] || [ $rootcommand = y ]
+	then
+		sudo /usr/lib64/boxpackage/init $1
+		exit
+	fi
+	echo "Do you want to use su? (Y/n)"
+	if [ $rootcommand = Y ] || [ $rootcommand = y ]
+	then
+		su root -c '/usr/lib64/boxpackage/init $1'
+		exit
+	fi
+	echo "Error, no root"
+else
+	echo "Error, waiting \$1"
+fi
