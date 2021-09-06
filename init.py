@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 import os
+import sys
 
 #distro
 import fedora
@@ -15,12 +16,14 @@ BUTTONWIDTH='39'
 #TEXTWIDTH=20
 TEXTWIDTH=18
 
-screen = tk.Tk()
-screen.title("BoxPackage")
-screen.geometry("400x400")
-screen.resizable(width = False, height = False)
+
 
 def main():
+	
+	screen = tk.Tk()
+	screen.title("BoxPackage")
+	screen.geometry("400x400")
+	screen.resizable(width = False, height = False)
 	
 	buttoninstall = tk.Button(screen, command=install, text='install', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonsearch = tk.Button(screen, command=search, text='search', height=BUTTONHEIGHT, width=BUTTONWIDTH)
@@ -45,6 +48,23 @@ def install():
 	entry.place(x=15, y=10)
 	
 	instok = tk.Button(instscreen, command=lambda: distro.installinstok(entry.get()), text='ok', height=1, width=3)
+	instok.place(x=70, y=40)
+	
+	instscreen.mainloop()
+	
+def pathinstall(text):
+	
+	instscreen = tk.Tk()
+	instscreen.geometry("200x100")
+	instscreen.title("program to install?")
+	instscreen.resizable(width = False, height = False)
+	
+	l = Label(instscreen, text = "Install this package?")
+	l.config(font =("Courier", 8))
+	l.pack()
+
+	
+	instok = tk.Button(instscreen, command=lambda: distro.installinstok(text), text='Install', height=1, width=3)
 	instok.place(x=70, y=40)
 	
 	instscreen.mainloop()
@@ -91,4 +111,13 @@ def show():
 	
 	instscreen.mainloop()
 
+if len(sys.argv) > 1:
+	
+	program = sys.argv[1]
+	
+	pathinstall(program)
+
 main()
+
+
+

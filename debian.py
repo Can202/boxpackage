@@ -2,7 +2,7 @@ import os
 
 
 def installinstok(text):
-	os.system("lxterminal -e 'apt update && apt install -y "+ text +"'")
+	os.system("lxterminal -e 'apt update && apt install -y "+ text +" && read'")
 
 def searchtok(text):
 	os.system("lxterminal -e 'apt update && apt search " + str(text) + " && read'")
