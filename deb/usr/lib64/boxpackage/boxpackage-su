@@ -1,15 +1,5 @@
 #!/bin/bash
 
-if [ ! -z $1 ] 
-then
-	if [ $1 = "sudo" ]
-	then
-		sudo /usr/lib64/boxpackage/init
-	fi
-	if [ $1 = "su" ]
-	then
-		su root -c '/usr/lib64/boxpackage/init'
-	fi
-else
-	echo "Error, waiting \$1"
-fi
+xdg-mime default boxpackage.desktop application/vnd.debian.binary-package
+
+su root -c '/usr/lib64/boxpackage/init'

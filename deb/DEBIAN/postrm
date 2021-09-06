@@ -1,2 +1,4 @@
 #!/bin/bash
 rm -f /usr/bin/boxpackage
+rm -f /usr/bin/boxpackage-sudo
+rm -f /usr/bin/boxpackage-su

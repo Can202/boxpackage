@@ -1,5 +1,7 @@
 #!/bin/bash
 
+xdg-mime default boxpackage.desktop application/vnd.debian.binary-package
+
 if [ ! -z $1 ] 
 then
 
@@ -17,6 +19,7 @@ then
 		exit
 	fi
 	echo "Do you want to use su? (Y/n)"
+	read rootcommand
 	if [ $rootcommand = Y ] || [ $rootcommand = y ]
 	then
 		su root -c '/usr/lib64/boxpackage/init $1'

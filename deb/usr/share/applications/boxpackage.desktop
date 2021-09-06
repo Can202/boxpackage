@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=BoxPackage
+Name=BoxPackage (Install just)
 Exec=boxpackage
 Icon=boxpackage
 Terminal=True
