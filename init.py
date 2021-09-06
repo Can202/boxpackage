@@ -12,6 +12,8 @@ screen.geometry("400x300")
 screen.resizable(width = False, height = False)
 
 def install():
+	instscreen = tk.Tk()
+	instscreen.mainloop()
 	os.system("lxterminal -e 'echo what do you want install? && read install && dnf install $install' && read")
 
 def search():
