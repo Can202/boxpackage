@@ -17,8 +17,23 @@ TEXTWIDTH=18
 
 screen = tk.Tk()
 screen.title("Install")
-screen.geometry("400x300")
+screen.geometry("400x400")
 screen.resizable(width = False, height = False)
+
+def main():
+	
+	buttoninstall = tk.Button(screen, command=install, text='install', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	buttonsearch = tk.Button(screen, command=search, text='search', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	buttonremove = tk.Button(screen, command=remove, text='remove', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	buttonshow = tk.Button(screen, command=show, text='show details', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	buttonupdate = tk.Button(screen, command=distro.update, text='update', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	
+	buttoninstall.place(x='10', y='30')
+	buttonsearch.place(x='10', y='95')
+	buttonremove.place(x='10', y='160')
+	buttonshow.place(x='10', y='225')
+	buttonupdate.place(x='10', y='290')
+	screen.mainloop()
 
 def install():
 	instscreen = tk.Tk()
@@ -62,16 +77,18 @@ def remove():
 	instok.place(x=70, y=40)
 	
 	removescreen.mainloop()
-def main():
+def show():
+	instscreen = tk.Tk()
+	instscreen.geometry("200x100")
+	instscreen.title("program to show details?")
+	instscreen.resizable(width = False, height = False)
 	
-	buttoninstall = tk.Button(screen, command=install, text='install', height=BUTTONHEIGHT, width=BUTTONWIDTH)
-	buttonsearch = tk.Button(screen, command=search, text='search', height=BUTTONHEIGHT, width=BUTTONWIDTH)
-	buttonremove = tk.Button(screen, command=remove, text='remove', height=BUTTONHEIGHT, width=BUTTONWIDTH)
-	buttonupdate = tk.Button(screen, command=distro.update, text='update', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	entry = ttk.Entry(instscreen, width=TEXTWIDTH)
+	entry.place(x=15, y=10)
 	
-	buttoninstall.place(x='10', y='30')
-	buttonsearch.place(x='10', y='95')
-	buttonremove.place(x='10', y='160')
-	buttonupdate.place(x='10', y='225')
-	screen.mainloop()
+	instok = tk.Button(instscreen, command=lambda: distro.showtok(entry.get()), text='ok', height=1, width=3)
+	instok.place(x=70, y=40)
+	
+	instscreen.mainloop()
+
 main()

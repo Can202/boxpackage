@@ -10,6 +10,9 @@ def searchtok(text):
 def removetok(text):
 	os.system("lxterminal -e 'dnf remove " + str(text) + "'")
 	
+def showtok(text):
+	os.system("lxterminal -e 'dnf info " + str(text) + " && read'")
+	
 def update():
 	os.system("lxterminal -e 'dnf update'")
 
