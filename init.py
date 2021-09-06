@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import os
 
 BUTTONHEIGHT='3'
@@ -13,15 +14,54 @@ screen.resizable(width = False, height = False)
 
 def install():
 	instscreen = tk.Tk()
+	instscreen.geometry("200x100")
+	instscreen.title("program to install?")
+	instscreen.resizable(width = False, height = False)
+	
+	entry = ttk.Entry(instscreen, width=20)
+	entry.place(x=15, y=10)
+	
+	instok = tk.Button(instscreen, command=lambda: installinstok(entry.get()), text='ok', height=1, width=3)
+	instok.place(x=70, y=40)
+	
 	instscreen.mainloop()
-	os.system("lxterminal -e 'echo what do you want install? && read install && dnf install $install' && read")
+	
+def installinstok(text):
+	os.system("lxterminal -e 'dnf install "+ text +"'")
+
 
 def search():
-	os.system("lxterminal -e 'echo what do you want search? && read search && dnf search $search && read'")
-
+	searchscreen = tk.Tk()
+	searchscreen.geometry("200x100")
+	searchscreen.title("program to search?")
+	searchscreen.resizable(width = False, height = False)
+	
+	entry = ttk.Entry(searchscreen, width=20)
+	entry.place(x=15, y=10)
+	
+	instok = tk.Button(searchscreen, command=lambda: searchtok(entry.get()), text='ok', height=1, width=3)
+	instok.place(x=70, y=40)
+	
+	searchscreen.mainloop()
+def searchtok(text):
+	os.system("lxterminal -e 'dnf search " + str(text) + " && read'")
+	
 def remove():
-	os.system("lxterminal -e 'echo what do you want remove? && read search && dnf remove $remove' && read")
-
+	removescreen = tk.Tk()
+	removescreen.geometry("200x100")
+	removescreen.title("program to remove?")
+	removescreen.resizable(width = False, height = False)
+	
+	entry = ttk.Entry(removescreen, width=20)
+	entry.place(x=15, y=10)
+	
+	instok = tk.Button(removescreen, command=lambda: removetok(entry.get()), text='ok', height=1, width=3)
+	instok.place(x=70, y=40)
+	
+	removescreen.mainloop()
+	
+def removetok(text):
+	os.system("lxterminal -e 'dnf remove " + str(text) + "'")
 def update():
 	os.system("lxterminal -e 'sudo dnf update'")
 
