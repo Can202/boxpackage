@@ -4,6 +4,11 @@ from tkinter import messagebox
 from tkinter import ttk
 import os
 
+#distro
+import fedora as distro
+import debian
+
+
 BUTTONHEIGHT='3'
 BUTTONWIDTH='44'
 
@@ -21,13 +26,10 @@ def install():
 	entry = ttk.Entry(instscreen, width=20)
 	entry.place(x=15, y=10)
 	
-	instok = tk.Button(instscreen, command=lambda: installinstok(entry.get()), text='ok', height=1, width=3)
+	instok = tk.Button(instscreen, command=lambda: distro.installinstok(entry.get()), text='ok', height=1, width=3)
 	instok.place(x=70, y=40)
 	
 	instscreen.mainloop()
-	
-def installinstok(text):
-	os.system("lxterminal -e 'dnf install "+ text +"'")
 
 
 def search():
@@ -39,12 +41,10 @@ def search():
 	entry = ttk.Entry(searchscreen, width=20)
 	entry.place(x=15, y=10)
 	
-	instok = tk.Button(searchscreen, command=lambda: searchtok(entry.get()), text='ok', height=1, width=3)
+	instok = tk.Button(searchscreen, command=lambda: distro.searchtok(entry.get()), text='ok', height=1, width=3)
 	instok.place(x=70, y=40)
 	
 	searchscreen.mainloop()
-def searchtok(text):
-	os.system("lxterminal -e 'dnf search " + str(text) + " && read'")
 	
 def remove():
 	removescreen = tk.Tk()
@@ -55,22 +55,16 @@ def remove():
 	entry = ttk.Entry(removescreen, width=20)
 	entry.place(x=15, y=10)
 	
-	instok = tk.Button(removescreen, command=lambda: removetok(entry.get()), text='ok', height=1, width=3)
+	instok = tk.Button(removescreen, command=lambda: distro.removetok(entry.get()), text='ok', height=1, width=3)
 	instok.place(x=70, y=40)
 	
 	removescreen.mainloop()
-	
-def removetok(text):
-	os.system("lxterminal -e 'dnf remove " + str(text) + "'")
-def update():
-	os.system("lxterminal -e 'sudo dnf update'")
-
 def main():
 	
 	buttoninstall = tk.Button(screen, command=install, text='install', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonsearch = tk.Button(screen, command=search, text='search', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonremove = tk.Button(screen, command=remove, text='remove', height=BUTTONHEIGHT, width=BUTTONWIDTH)
-	buttonupdate = tk.Button(screen, command=update, text='update', height=BUTTONHEIGHT, width=BUTTONWIDTH)
+	buttonupdate = tk.Button(screen, command=distro.update, text='update', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	
 	buttoninstall.place(x='10', y='30')
 	buttonsearch.place(x='10', y='95')
