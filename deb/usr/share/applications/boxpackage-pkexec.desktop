@@ -2,6 +2,5 @@
 Name=BoxPackage
 Exec=boxpackage-pkexec
 Icon=boxpackage
-Terminal=True
 Type=Application
 Categories=Utility
