@@ -4,6 +4,6 @@ Section: admin
 Maintainer: Can202 <mgoopazo@gmail.com>
 Architecture: amd64
 Version: 0.2
-Depends: python3, lxterminal
+Depends: python3, lxterminal, sudo, policykit-1
 Description: Installer
  Simple Visual Installer (apt)

@@ -2,3 +2,4 @@
 ln /usr/lib64/boxpackage/boxpackage /usr/bin/boxpackage
 ln /usr/lib64/boxpackage/boxpackage-su /usr/bin/boxpackage-su
 ln /usr/lib64/boxpackage/boxpackage-sudo /usr/bin/boxpackage-sudo
+ln /usr/lib64/boxpackage/boxpackage-sudo /usr/bin/boxpackage-pkexec

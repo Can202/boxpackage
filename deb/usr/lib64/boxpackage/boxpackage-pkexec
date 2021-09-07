@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xdg-mime default boxpackage.desktop application/vnd.debian.binary-package
+
+pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
