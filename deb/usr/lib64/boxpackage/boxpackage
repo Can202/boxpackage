@@ -11,21 +11,25 @@ then
 		exit
 	fi
 
-	echo "Do you want to use sudo? (Y/n)"
-	read rootcommand
-	if [ $rootcommand = Y ] || [ $rootcommand = y ]
+	if [ -f "$HOME/.config/boxpackage/auth" ]
 	then
-		sudo /usr/lib64/boxpackage/init $1
-		exit
+		Auth=$(cat $HOME/.config/boxpackage/auth)
+		if [ Auth = "sudo" ]
+		then
+			sudo /usr/lib64/boxpackage/init $1
+		fi
+		if [ Auth = "pkexec" ]
+		then
+			pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
+		fi
+		if [ Auth = "su" ]
+		then
+			su root -c '/usr/lib64/boxpackage/init'
+		fi
+	else
+		pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
 	fi
-	echo "Do you want to use su? (Y/n)"
-	read rootcommand
-	if [ $rootcommand = Y ] || [ $rootcommand = y ]
-	then
-		su root -c '/usr/lib64/boxpackage/init $1'
-		exit
-	fi
-	echo "Error, no root"
+	
 else
 	echo "Error, waiting \$1"
 fi

@@ -2,4 +2,16 @@
 
 xdg-mime default boxpackage.desktop application/vnd.debian.binary-package
 
+if [ ! -d "$HOME/.config/boxpackage/" ]
+then
+	mkdir $HOME/.config/boxpackage/
+fi
+if [ -f "$HOME/.config/boxpackage/auth" ]
+then
+	rm -f $HOME/.config/boxpackage/auth
+fi
+touch $HOME/.config/boxpackage/auth
+echo "pkexec" > $HOME/.config/boxpackage/auth
+
+
 pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init

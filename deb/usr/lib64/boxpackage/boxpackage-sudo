@@ -2,4 +2,16 @@
 
 xdg-mime default boxpackage.desktop application/vnd.debian.binary-package
 
+if [ ! -d "$HOME/.config/boxpackage/" ]
+then
+	mkdir $HOME/.config/boxpackage/
+fi
+if [ -f "$HOME/.config/boxpackage/auth" ]
+then
+	rm -f $HOME/.config/boxpackage/auth
+fi
+touch $HOME/.config/boxpackage/auth
+echo "sudo" > $HOME/.config/boxpackage/auth
+
+
 sudo /usr/lib64/boxpackage/init
