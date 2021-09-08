@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 xdg-mime default boxpackage.desktop application/vnd.debian.binary-package
 
 if [ ! -z $1 ] 
@@ -7,26 +8,37 @@ then
 
 	if [ $(whoami) = "root" ]
 	then
+		echo root
 		/usr/lib64/boxpackage/init $1
 		exit
 	fi
 
 	if [ -f "$HOME/.config/boxpackage/auth" ]
 	then
-		Auth=$(cat $HOME/.config/boxpackage/auth)
-		if [ Auth = "sudo" ]
+		AUTH=$(cat $HOME/.config/boxpackage/auth)
+		if [ $AUTH == "sudo" ]
 		then
+			echo sudo
 			sudo /usr/lib64/boxpackage/init $1
-		fi
-		if [ Auth = "pkexec" ]
-		then
-			pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
-		fi
-		if [ Auth = "su" ]
-		then
-			su root -c '/usr/lib64/boxpackage/init'
+		else
+			if [ $AUTH == "pkexec" ]
+			then
+				echo pkexec
+				pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
+			else
+				if [ $AUTH == "su" ]
+				then
+					echo su
+					su root -c '/usr/lib64/boxpackage/init'
+				else
+					echo nothing
+					pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
+				fi
+			fi
+			
 		fi
 	else
+		echo nothing
 		pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/lib64/boxpackage/init
 	fi
 	
