@@ -24,18 +24,25 @@ def main():
 	screen.title("BoxPackage")
 	screen.geometry("400x400")
 	screen.resizable(width = False, height = False)
-	
+	screen.grid_columnconfigure(1, weight=1)
+	screen.eval('tk::PlaceWindow . center')
 	buttoninstall = tk.Button(screen, command=install, text='install', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonsearch = tk.Button(screen, command=search, text='search', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonremove = tk.Button(screen, command=remove, text='remove', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonshow = tk.Button(screen, command=show, text='show details', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonupdate = tk.Button(screen, command=distro.update, text='update', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	
-	buttoninstall.place(x='10', y='30')
-	buttonsearch.place(x='10', y='95')
-	buttonremove.place(x='10', y='160')
-	buttonshow.place(x='10', y='225')
-	buttonupdate.place(x='10', y='290')
+	buttoninstall.grid(row=0, column=1)
+	buttonsearch.grid(row=1, column=1)
+	buttonremove.grid(row=2, column=1)
+	buttonshow.grid(row=3, column=1)
+	buttonupdate.grid(row=4, column=1)
+	
+#	buttoninstall.pack(fill=tk.X)
+#	buttonsearch.pack(fill=tk.X)
+#	buttonremove.pack(fill=tk.X)
+#	buttonshow.pack(fill=tk.X)
+#	buttonupdate.pack(fill=tk.X)
 	screen.mainloop()
 
 def install():
@@ -43,6 +50,7 @@ def install():
 	instscreen.geometry("200x100")
 	instscreen.title("program to install?")
 	instscreen.resizable(width = False, height = False)
+	instscreen.eval('tk::PlaceWindow . center')
 	
 	entry = ttk.Entry(instscreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
@@ -58,6 +66,7 @@ def pathinstall(text):
 	instscreen.geometry("200x100")
 	instscreen.title("program to install?")
 	instscreen.resizable(width = False, height = False)
+	instscreen.eval('tk::PlaceWindow . center')
 	
 	l = Label(instscreen, text = "Install this package?")
 	l.config(font =("Courier", 8))
@@ -75,6 +84,7 @@ def search():
 	searchscreen.geometry("200x100")
 	searchscreen.title("program to search?")
 	searchscreen.resizable(width = False, height = False)
+	searchscreen.eval('tk::PlaceWindow . center')
 	
 	entry = ttk.Entry(searchscreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
@@ -89,6 +99,7 @@ def remove():
 	removescreen.geometry("200x100")
 	removescreen.title("program to remove?")
 	removescreen.resizable(width = False, height = False)
+	removescreen.eval('tk::PlaceWindow . center')
 	
 	entry = ttk.Entry(removescreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
@@ -102,6 +113,7 @@ def show():
 	instscreen.geometry("200x100")
 	instscreen.title("program to show details?")
 	instscreen.resizable(width = False, height = False)
+	instscreen.eval('tk::PlaceWindow . center')
 	
 	entry = ttk.Entry(instscreen, width=TEXTWIDTH)
 	entry.place(x=15, y=10)
