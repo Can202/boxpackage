@@ -32,11 +32,11 @@ def main():
 	buttonshow = tk.Button(screen, command=show, text='show details', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	buttonupdate = tk.Button(screen, command=distro.update, text='update', height=BUTTONHEIGHT, width=BUTTONWIDTH)
 	
-	buttoninstall.grid(row=0, column=1)
-	buttonsearch.grid(row=1, column=1)
-	buttonremove.grid(row=2, column=1)
-	buttonshow.grid(row=3, column=1)
-	buttonupdate.grid(row=4, column=1)
+	buttoninstall.grid(row=0, column=1, pady=2)
+	buttonsearch.grid(row=1, column=1, pady=2)
+	buttonremove.grid(row=2, column=1, pady=2)
+	buttonshow.grid(row=3, column=1, pady=2)
+	buttonupdate.grid(row=4, column=1, pady=2)
 	
 #	buttoninstall.pack(fill=tk.X)
 #	buttonsearch.pack(fill=tk.X)
